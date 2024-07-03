@@ -1,0 +1,106 @@
+<html>
+	<head>
+	<title>Testing the event driven data layer Page 1</title>
+	</head>
+	
+	
+	<body>
+	<script src="C:\Users\d.b.srinivas.rao\OneDrive - Accenture\Documents\EDC\Transformation\testEDDL.js"></script>
+	
+	<h1> Data Layer Test </h1>
+	
+	<button onclick="updateDataLayer1()"> send data </button>
+	
+	<script>
+	function updateDataLayer1(){
+		alert("Button Clicked");
+		var obj = {
+			'event' : 'cta',
+			'eventInfo': {
+				'eventAction': 'click',
+				'eventName': 'button click',	
+				'eventType': 'button',
+				'eventComponent': 'Testing Component', 	
+				'eventPage': 'file:///C:/Users/d.b.srinivas.rao/OneDrive%20-%20Accenture/Documents/EDC/Transformation/Solutions.html',	
+				'eventPageName': 'Data Layer Test',
+				'destinationPage': 'Next page',
+				'eventText': 'send data'	            //expl: 'learn more'
+			}
+		}
+		EDCTest.utils.dataLayerTracking(obj);
+	}
+	</script>
+	
+	<a href = "C:\Users\d.b.srinivas.rao\OneDrive - Accenture\Documents\EDC\Transformation\Solutions_1.html" onclick="updateDataLayer()" target="_blank">Next Page</a>
+		<script>
+		function updateDataLayer(){
+		var obj = {
+			'event' : 'cta',
+			'eventInfo': {
+				'eventAction': 'click',
+				'eventName': 'link click',	
+				'eventType': 'link',
+				'eventComponent': 'Testing Component', 	
+				'eventPage': 'file:///C:/Users/d.b.srinivas.rao/OneDrive%20-%20Accenture/Documents/EDC/Transformation/Solutions.html',	
+				'eventPageName': 'Data Layer Test',
+				'destinationPage': 'Next page',
+				'eventText': 'Next Page'	            //expl: 'learn more'
+			}
+		}
+		EDCTest.utils.dataLayerTracking(obj);
+	}
+	</script>
+	
+	
+	<!--Data Layer--->
+	<script type="text/javascript">
+	
+	var dataLayerJS = (function (){
+		'use strict';
+		 
+		 function init(){
+		 
+			var obj= {
+				'event': 'page-loaded',
+				'page': {
+					'pageType': 'homepage',
+					'pageName': 'Test Page 1',
+					'primaryCategory': '',
+					'subCategory1': '',
+					'subCategory2': '',
+					'issueDate': '2018-09-19',
+					'siteEnv': 'prod',            //'qac', 'ppr', 'production'
+					'sysEnv': 'desktop', 	 // 'mobile', 'desktop', 'tablet'
+					'language': 'ENGLISH',	// 'english', 'french'
+					'server': 'localhost',
+				},
+				'user': {
+					'authStatus' : 'not-authenticated',    //status is non-authenticated until successful login
+					'externalID': '<external ID>',       // to be persisted in Launch
+					'guid': '123456789'	                // to be persisted in Launch
+			
+				}
+			}
+			
+			if (window[EDCTest.datalayerObj]) {
+				 window[window.EDCTest.datalayerObj].push(obj);
+						//EDC.forms.WaitUntilCustomerGUIDIsRetrieved(); // Eloqua Customer GUID.
+					   // window.EDC.utils.addListTags('region', '[]', obj.page.content);
+					   // window.EDC.utils.addListTags('solution', '[]', obj.user.segment);
+			}
+		}
+		 return {
+            init
+        };
+	})();
+
+    dataLayerJS.init();
+
+	</script>
+	
+	 <!-- End of Data layer -->
+	
+	
+	</body>
+
+</html>
