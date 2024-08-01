@@ -12,11 +12,13 @@ if (!window.digitalData) {
  
 EDC.utils = EDC.utils || new function () {
     'use strict';
+     this.dataLayerTracking = function (obj) {	
 	if (window[window.EDC.datalayerObj] && obj) {
             window[window.EDC.datalayerObj].events = [];
             window[window.EDC.datalayerObj].events.push(obj);
         }
     };
+}
 
 
  
