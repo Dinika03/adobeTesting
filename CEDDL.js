@@ -10,9 +10,9 @@ if (!window.digitalData) {
     window[EDC.datalayerObj].user.segment = window[EDC.datalayerObj].user.segment || {};
 }
  
-EDCTest.utils = EDCTest.utils || new function () {
+EDC.utils = EDC.utils || new function () {
     'use strict';
-		if (window[window.EDC.datalayerObj] && obj) {
+	if (window[window.EDC.datalayerObj] && obj) {
             window[window.EDC.datalayerObj].events = [];
             window[window.EDC.datalayerObj].events.push(obj);
         }
