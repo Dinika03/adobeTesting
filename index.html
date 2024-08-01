@@ -10,6 +10,7 @@
 	
 	<body>
 	<script src="testEDDL.js"></script>
+	<script src="CEDDL.js"></script>
 	
 	<h1> Data Layer Test </h1>
 	
@@ -34,7 +35,24 @@
 		EDCTest.utils.dataLayerTracking(obj);
 	}
 	</script>
+	// This is to populate events in the object
+ 	<button onclick="updateDataLayer2()"> Submit </button>
 	
+	<script>
+	function updateDataLayer2(){
+		//alert("Button Clicked");
+		var obj = {
+			eventInfo: {
+			eventComponent: "brand – newsletter subscription",
+			eventType: "form",
+			eventName: "form – email submitted",
+			eventText: "Submit",
+			eventPage: window.location.href
+			}
+		};
+		EDCTest.utils.dataLayerTracking(obj);
+	}
+	</script>
 	<a href = "Solutions_1.html" onclick="updateDataLayer()" target="_blank">Next Page</a>
 		<script>
 		function updateDataLayer(){
