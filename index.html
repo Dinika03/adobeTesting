@@ -9,12 +9,27 @@
 	
 	
 	<body>
-	<script src="testEDDL.js"></script>
-	<script src="CEDDL.js"></script>
-	
+	<!--<script src="testEDDL.js"></script>
+	<script src="CEDDL.js"></script>-->
+	 <script type="text/javascript">
+          <!--Function to push data into events array property in digitalData object-->
+       	    EDC.utils = EDC.utils || new function () {
+            'use strict';
+             this.dataLayerTracking = function (obj) {
+                if (window[window.EDC.datalayerObj] && obj) {
+                    window[window.EDC.datalayerObj].events = [];
+                    window[window.EDC.datalayerObj].events.push(obj);
+                }
+               if (typeof _satellite !== 'undefined') {
+		   alert("DC rule fired");		       
+                   <!--_satellite.track('dl-event tracking');-->
+                }
+            };
+        }
+	</script>
 	<h1> Data Layer Test </h1>
 	
-	<button onclick="updateDataLayer1()"> send data </button>
+	<!--<button onclick="updateDataLayer1()"> send data </button>
 	
 	<script>
 	function updateDataLayer1(){
@@ -71,7 +86,7 @@
 		}
 		EDCTest.utils.dataLayerTracking(obj);
 	}
-	</script>
+	</script>-->
 	  <section class="c-gated-lead-gen-form">
                                                 <div class="form-background">
                                                     <form name="BRANDLPFROM1" id="step1" class="email-section" data-event-component="Brand Campaing Email Subscription" data-event-type="form" data-event-name="brand 2023 - form submit" data-event-action="main body" data-event-engagement="3" data-event-level="1">
@@ -93,8 +108,23 @@
                                                         <div class="key-line"></div>
                                                     </div>
                                                     <div class="actions step one">
-                                                        <button class="c-interaction-button bottonform" type="submit" id="getstartednow1" data-english-text="Submit">Submit&nbsp;&nbsp;›</button>
-                                                    </div>
+                                                        <button class="c-interaction-button bottonform" type="submit" id="getstartednow1" onclick="updateDataLayer()" data-english-text="Submit">Submit&nbsp;&nbsp;›</button>
+                                                   	<script>
+								function updateDataLayer(){
+									alert("Button Clicked");
+									var obj = {
+										eventInfo: {
+										eventComponent: "brand – newsletter subscription",
+										eventType: "form",
+										eventName: "form – email submitted",
+										eventText: "Submit",
+										eventPage: window.location.href
+									}
+								};
+								EDC.utils.dataLayerTracking(obj);
+							}
+						    </script>
+						    </div>
                                                     <div class="layout container-fluid">
                                                         <input type="hidden" name="caslConsent" id="caslConsent" value="">
                                                         <input type="hidden" name="lang" id="formLang" value="">
