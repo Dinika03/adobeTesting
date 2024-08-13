@@ -12,6 +12,14 @@
 	<!--<script src="testEDDL.js"></script>
 	<script src="CEDDL.js"></script>-->
 	 <script type="text/javascript">
+	  window.EDC = window.EDC || {};
+	  EDC.datalayerObj = 'digitalData';
+	  if (!window.digitalData) {
+             window[EDC.datalayerObj] = {};
+             window[EDC.datalayerObj].events = window[EDC.datalayerObj].events || [];
+             window[EDC.datalayerObj].user = window[EDC.datalayerObj].user || {};
+             window[EDC.datalayerObj].user.segment = window[EDC.datalayerObj].user.segment || {};
+          }
           //Function to push data into events array property in digitalData object
        	    EDC.utils = EDC.utils || new function () {
             'use strict';
