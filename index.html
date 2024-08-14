@@ -116,22 +116,39 @@
                                                         <div class="key-line"></div>
                                                     </div>
                                                     <div class="actions step one">
-                                                        <button class="c-interaction-button bottonform" type="submit" id="getstartednow1" onclick="updateDataLayer()" data-english-text="Submit">Submit&nbsp;&nbsp;›</button>
-                                                   	<script>
-								function updateDataLayer(){
-									alert("Button Clicked");
-									var obj = {
-										eventInfo: {
-										eventComponent: "brand – newsletter subscription",
-										eventType: "form",
-										eventName: "form – email submitted",
-										eventText: "Submit",
-										eventPage: window.location.href
-									}
-								};
-								EDC.utils.dataLayerTracking(obj);
-							}
-						    </script>
+                                                        <button class="c-interaction-button bottonform" type="submit" id="getstartednow1" onclick="validateAndSubmit(event)" data-english-text="Submit">Submit&nbsp;&nbsp;›</button>
+                                                   	    <script>
+								        function validateAndSubmit(event) {
+								            event.preventDefault(); // Prevent form submission
+								            var emailInput = document.getElementById('emailAddress');
+								            var emailValue = emailInput.value;
+								            var errorDiv = document.getElementById('error1');
+								
+								            // Simple email validation regex
+								            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+								
+								            if (emailPattern.test(emailValue)) {
+								                errorDiv.textContent = ''; // Clear any previous error messages
+								                updateDataLayer();
+								            } else {
+								                errorDiv.textContent = 'Please enter a valid email address.';
+								            }
+								        }
+								
+								        function updateDataLayer() {
+								            alert("Button Clicked");
+								            var obj = {
+								                eventInfo: {
+								                    eventComponent: "brand – newsletter subscription",
+								                    eventType: "form",
+								                    eventName: "form – email submitted",
+								                    eventText: "Submit",
+								                    eventPage: window.location.href
+								                }
+								            };
+								            EDC.utils.dataLayerTracking(obj);
+								        }
+								    </script>
 						    </div>
                                                     <div class="layout container-fluid">
                                                         <input type="hidden" name="caslConsent" id="caslConsent" value="">
