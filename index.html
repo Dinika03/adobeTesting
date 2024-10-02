@@ -1,44 +1,17 @@
 <html>
 	<head>
-	<meta http-equiv="Content-Security-Policy" content="default-src 'self' https://*.clarity.ms https://c.bing.com 'unsafe-inline'; upgrade-insecure-requests; script-src 'self' 'unsafe-inline' 'unsafe-eval' *.windows.net www.youtube.com assets.adobedtm.com https://*.clarity.ms https://c.bing.com; connect-src 'self' https://*.clarity.ms https://c.bing.com; img-src 'self' data: https://*.clarity.ms https://c.bing.com; style-src 'self' 'unsafe-inline'; font-src 'self'; frame-src 'self'; "/>	
 	<script src="https://assets.adobedtm.com/e72b4113c11a/28cf14cbcd96/launch-d2a0090a9844-development.min.js" async></script>
-	<!--Stage and prod launch code
-	<script src="https://assets.adobedtm.com/e72b4113c11a/28cf14cbcd96/launch-a9c72840eaf3-staging.min.js" async></script>
-	<script src="https://assets.adobedtm.com/e72b4113c11a/28cf14cbcd96/launch-8fe391326d74.min.js" async></script>--->
 	<title>Testing the event driven data layer Page 1</title>
 	</head>
 	
 	
 	<body>
-	<!--<script src="testEDDL.js"></script>
-	<script src="CEDDL.js"></script>-->
-	 <script type="text/javascript">
-	  window.EDC = window.EDC || {};
-	  EDC.datalayerObj = 'digitalData';
-	  if (!window.digitalData) {
-             window[EDC.datalayerObj] = {};
-             window[EDC.datalayerObj].events = window[EDC.datalayerObj].events || [];
-             window[EDC.datalayerObj].user = window[EDC.datalayerObj].user || {};
-             window[EDC.datalayerObj].user.segment = window[EDC.datalayerObj].user.segment || {};
-          }
-          //Function to push data into events array property in digitalData object
-       	    EDC.utils = EDC.utils || new function () {
-            'use strict';
-             this.dataLayerTracking = function (obj) {
-                if (window[window.EDC.datalayerObj] && obj) {
-                    window[window.EDC.datalayerObj].events = [];
-                    window[window.EDC.datalayerObj].events.push(obj);
-                }
-               if (typeof _satellite !== 'undefined') {
-		   alert("DC rule fired");		       
-                   //_satellite.track('dl-event tracking');
-                }
-            };
-        }
-	</script>
+	<script src="testEDDL.js"></script>
+	<script src="CEDDL.js"></script>
+	
 	<h1> Data Layer Test </h1>
 	
-	<!--<button onclick="updateDataLayer1()"> send data </button>
+	<button onclick="updateDataLayer1()"> send data </button>
 	
 	<script>
 	function updateDataLayer1(){
@@ -59,8 +32,8 @@
 		EDCTest.utils.dataLayerTracking(obj);
 	}
 	</script>
-	
- 	<button onclick="updateDataLayer2()"> Submit </button>
+ 
+ <button onclick="updateDataLayer2()"> Submit </button>
 	
 	<script>
 	function updateDataLayer2(){
@@ -77,6 +50,8 @@
 		EDC.utils.dataLayerTracking(obj);
 	}
 	</script>
+ 
+	
 	<a href = "Solutions_1.html" onclick="updateDataLayer()" target="_blank">Next Page</a>
 		<script>
 		function updateDataLayer(){
@@ -95,75 +70,8 @@
 		}
 		EDCTest.utils.dataLayerTracking(obj);
 	}
-	</script>-->
-	  <section class="c-gated-lead-gen-form">
-                                                <div class="form-background">
-                                                    <form name="BRANDLPFROM1" id="step1" class="email-section" data-event-component="Brand Campaing Email Subscription" data-event-type="form" data-event-name="brand 2023 - form submit" data-event-action="main body" data-event-engagement="3" data-event-level="1">
-                                
-                                                    <div class="form-group">
-                                                        <label for="emailAddress">Business e-mail address:</label>
-                                                        <p class="description">Share your email address to receive our latest insights personalized to your business.</p>
-                                                        <input type="email" class="form-control email-submit" placeholder="example@edc.ca" name="emailAddress" id="emailAddress" required="required" aria-invalid="true">
-                                                        <div id="error1" class="error"></div>
-                                                    </div>
-                                                    <div class="form-disclaimer-brand">
-                                                        <div class="text">
-                                                            <p>By submitting this form, I consent to receive EDC’s newsletters, trade information and promotional messages, and can withdraw consent at any time.</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="c-keyline aem-GridColumn--tablet--12 aem-GridColumn--offset--tablet--0 aem-GridColumn--phone--none aem-GridColumn--phone--12 aem-GridColumn--tablet--none aem-GridColumn aem-GridColumn--default--12 aem-GridColumn--offset--phone--0 my-5" id="keyLine">
-                                                        <div class="key-line"></div>
-                                                    </div>
-                                                    <div class="actions step one">
-                                                        <button class="c-interaction-button bottonform" type="submit" id="getstartednow1" onclick="validateAndSubmit(event)" data-english-text="Submit">Submit&nbsp;&nbsp;›</button>
-                                                   	    <script>
-								        function validateAndSubmit(event) {
-								            event.preventDefault(); // Prevent form submission
-								            var emailInput = document.getElementById('emailAddress');
-								            var emailValue = emailInput.value;
-								            var errorDiv = document.getElementById('error1');
-								
-								            // Simple email validation regex
-								            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-								
-								            if (emailPattern.test(emailValue)) {
-								                errorDiv.textContent = ''; // Clear any previous error messages
-								                updateDataLayer();
-								            } else {
-								                errorDiv.textContent = 'Please enter a valid email address.';
-								            }
-								        }
-								
-								        function updateDataLayer() {
-								            alert("Button Clicked");
-								            var obj = {
-								                eventInfo: {
-								                    eventComponent: "brand – newsletter subscription",
-								                    eventType: "form",
-								                    eventName: "form – email submitted",
-								                    eventText: "Submit",
-								                    eventPage: window.location.href
-								                }
-								            };
-								            EDC.utils.dataLayerTracking(obj);
-								        }
-								    </script>
-						    </div>
-                                                    <div class="layout container-fluid">
-                                                     
-                                                    </div>
-                                                </form>
-                                                <div id="successMessage" style="display:none;" class="success-message my-5">
-                                                    <p><b>Thank you!</b> We’ll deliver our latest business insights right to your inbox. Please provide additional information, so we can personalize our content to suit your needs.</p>
-                                                </div>
-                                            </section>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-                        </div>
-                    </div>
-                </div>
+	</script>
+	
 	
 	<!--Data Layer--->
 	<script type="text/javascript">
@@ -190,8 +98,8 @@
 				'user': {
 					'authStatus' : 'not-authenticated',    //status is non-authenticated until successful login
 					'externalID': '<external ID>',       // to be persisted in Launch
-					'guid': '123456789',	                // to be persisted in Launch
-					'exportStatus': 'Currently Exporting'
+					'guid': '123456789'	                // to be persisted in Launch
+			
 				}
 			}
 			
