@@ -182,9 +182,10 @@
 			};
 			if (window[window.EDC.datalayerObj]) {
 
-					window[window.EDC.datalayerObj].page.pageInfo = EDC.utils.pageInfoTracking(objCEDDL.page.pageInfo);
-					window[window.EDC.datalayerObj].page.category = EDC.utils.pageCategoryTracking(objCEDDL.page.category);
-					window[window.EDC.datalayerObj].user.segment = EDC.utils.userSegmentTracking(objCEDDL.user.segement);
+				window[window.EDC.datalayerObj] = objCEDDL;	
+				//window[window.EDC.datalayerObj].page.pageInfo = EDC.utils.pageInfoTracking(objCEDDL.page.pageInfo);
+					//window[window.EDC.datalayerObj].page.category = EDC.utils.pageCategoryTracking(objCEDDL.page.category);
+					//window[window.EDC.datalayerObj].user.segment = EDC.utils.userSegmentTracking(objCEDDL.user.segement);
 	
         	  	}
 			 
