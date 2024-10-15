@@ -1,9 +1,14 @@
 <html>
 	<head>
+	<!--Property 1 -->
 	<script src="https://assets.adobedtm.com/e72b4113c11a/28cf14cbcd96/launch-d2a0090a9844-development.min.js" async></script>
+        <!-- Property 2
+	<script src="https://assets.adobedtm.com/e72b4113c11a/9233a463faa5/launch-a68d40369487-development.min.js" async></script>-->
+	
 	<!--Stage and prod launch code
 	<script src="https://assets.adobedtm.com/e72b4113c11a/28cf14cbcd96/launch-a9c72840eaf3-staging.min.js" async></script>
 	<script src="https://assets.adobedtm.com/e72b4113c11a/28cf14cbcd96/launch-8fe391326d74.min.js" async></script>--->
+	
 	<title>Testing the event driven data layer Page 2</title>
 	</head>
 	
@@ -22,14 +27,24 @@
 				'eventAction': 'click',
 				'eventName': 'link click',	
 				'eventType': 'link',
-				'eventComponent': 'contact information', 	
+				'eventComponent': 'Testing Component', 	
 				'eventPage': 'Solutions_1.html',	
-				'eventPageName': 'Data Layer Test Page 2',
-				'destinationPage': 'solution',
-				'eventText': 'Go back'	            //expl: 'learn more'
+				'eventPageName': 'Data Layer Test',
+				'destinationPage': 'index page',
+				'eventText': 'go back'	            //expl: 'learn more'
 			}
 		}
 		EDCTest.utils.dataLayerTracking(obj);
+		var objCEDDL = {
+			eventInfo: {
+			eventComponent: "Testing component go back",
+			eventType: "link",
+			eventName: "link - click - CEDDL",
+			eventText: "go back",
+			eventPage: window.location.href
+			}
+		};
+		EDC.utils.dataLayerTracking(objCEDDL);
 	}
 	</script>
 	
@@ -40,11 +55,11 @@
 		'use strict';
 		 
 		 function init(){
-			
+		 
 			var obj= {
 				'event': 'page-loaded',
 				'page': {
-					'pageType': 'content page',
+					'pageType': 'homepage',
 					'pageName': 'Test Page 2',
 					'primaryCategory': '',
 					'subCategory1': '',
@@ -53,13 +68,14 @@
 					'siteEnv': 'prod',            //'qac', 'ppr', 'production'
 					'sysEnv': 'desktop', 	 // 'mobile', 'desktop', 'tablet'
 					'language': 'ENGLISH',	// 'english', 'french'
-					'server': 'local host',
+					'server': 'localhost',
 				},
 				'user': {
 					'authStatus' : 'not-authenticated',    //status is non-authenticated until successful login
 					'externalID': '<external ID>',       // to be persisted in Launch
-					'guid': '123456789'                 // to be persisted in Launch
-
+					'guid': '123456789',  // to be persisted in Launch
+					'exportStatus': 'currently exporting - EDDL'
+			
 				}
 			}
 			
@@ -69,13 +85,49 @@
 					   // window.EDC.utils.addListTags('region', '[]', obj.page.content);
 					   // window.EDC.utils.addListTags('solution', '[]', obj.user.segment);
 			}
-			}
+
+			var objCEDDL= {
+				page: {
+                       			 category: {
+                           			 pageType: 'homepage', // As named within AEM.
+                           			 primaryCategory: '', // From folder structure first entry following language folder.
+                           			 subCategory1: '', // From folder structure second entry following language folder.
+                           			 subCategory2: '' // Populate if category is present. Only use English name of category.
+                        		},
+                       			pageInfo: {
+                            			issueDate: '2018\u002D09\u002D19', // YYYY-MM-DD
+                            			pageName: 'Test Page 2', // Page name.
+                           			siteEnv: 'prod', // Standard points of site env: such as dev/stage/test, etc.
+                                    	 	sysEnv: desktop, // Mobile / Desktop / Tablet.
+                            			language: 'ENGLISH', // From the folder structure, first folder following the domain.
+                            			server: ' ', // Domain in URL. Specific to environment.
+                            			disableAddthis: 'off' //Addthis status i.e. true for disabled, false for enabled.
+                        		}
+				},
+				 user: {
+                       			 segment : {
+                           			 exportStatus: 'currently exporting - CEDDL',
+                           			 persona: '',
+                           			 buyerStage: '',
+                            			 guid: '',
+                            			 authStatus: "not-authenticated",
+                           			 myedcCustStatus: "non-myEDC user" ,
+                            			 externalID: ''
+					 }
+                        	},
+                   		 events: []
+			};
+			if (window[EDC.datalayerObj]) {
+                		window[window.EDC.datalayerObj] = obj;
+			   }
+			 
+		}
 		 return {
             init
         };
 	})();
 
-    dataLayerJS.init();
+        dataLayerJS.init();
 
 	</script>
 	<!-- End of Data layer -->
