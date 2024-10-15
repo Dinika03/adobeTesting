@@ -180,9 +180,29 @@
                         	},
                    		 events: []
 			};
-			if (window[EDC.datalayerObj]) {
-                		window[window.EDC.datalayerObj] = objCEDDL;
-			   }
+			if (window[window.EDC.datalayerObj] && objCEDDL) {
+            			if (!window[window.EDC.datalayerObj].page) {
+                			window[window.EDC.datalayerObj].page = {};
+            			}
+
+            		 if (!window[window.EDC.datalayerObj].page.pageInfo) {
+                		window[window.EDC.datalayerObj].page.pageInfo = {};
+            		}
+			 if (!window[window.EDC.datalayerObj].page.category) {
+                		window[window.EDC.datalayerObj].page.category = {};
+            		}
+
+            		if (!join) {
+               		 window[window.EDC.datalayerObj].page.pageInfo = objCEDDL;
+            		} else {
+                		(window[window.EDC.datalayerObj].page.pageInfo).extend((window[window.EDC.datalayerObj].page.pageInfo), objCEDDL);
+            		}
+			if (!join) {
+               		 window[window.EDC.datalayerObj].page.category = objCEDDL;
+            		} else {
+                		(window[window.EDC.datalayerObj].page.category).extend((window[window.EDC.datalayerObj].page.category), objCEDDL);
+            		}
+        	}
 			 
 		}
 		 return {
