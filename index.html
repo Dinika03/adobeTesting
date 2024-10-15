@@ -184,10 +184,10 @@
 
 				//window[window.EDC.datalayerObj] = objCEDDL;
 				//window[window.EDC.datalayerObj] = Object.assign({}, window[EDC.datalayerObj], objCEDDL);
-				Object.assign({}, window[EDC.datalayerObj], objCEDDL.page.pageInfo);
-				EDC.utils.pageInfoTracking(Object.assign({}, window[EDC.datalayerObj], objCEDDL.page.pageInfo));
-				EDC.utils.pageCategoryTracking(objCEDDL);
-				EDC.utils.userSegmentTracking(objCEDDL);
+				Object.assign({}, window[EDC.datalayerObj].page.pageInfo, objCEDDL.page.pageInfo);
+				//EDC.utils.pageInfoTracking(Object.assign({}, window[EDC.datalayerObj], objCEDDL.page.pageInfo));
+				//EDC.utils.pageCategoryTracking(objCEDDL);
+				//EDC.utils.userSegmentTracking(objCEDDL);
 	
         	  	}
 			 
