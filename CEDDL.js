@@ -6,8 +6,8 @@ EDC.datalayerObj = 'digitalData';
 if (!window.digitalData) {
     window[EDC.datalayerObj] = {};
     window[EDC.datalayerObj].page = window[EDC.datalayerObj].page || {};
-    window[EDC.datalayerObj].user.segment = window[EDC.datalayerObj].page.category || {};
-    window[EDC.datalayerObj].user.segment = window[EDC.datalayerObj].page.pageInfo || {};
+    //window[EDC.datalayerObj].user.segment = window[EDC.datalayerObj].page.category || {};
+   //window[EDC.datalayerObj].user.segment = window[EDC.datalayerObj].page.pageInfo || {};
     window[EDC.datalayerObj].events = window[EDC.datalayerObj].events || [];
     window[EDC.datalayerObj].user = window[EDC.datalayerObj].user || {};
     window[EDC.datalayerObj].user.segment = window[EDC.datalayerObj].user.segment || {};
@@ -19,6 +19,19 @@ EDC.utils = EDC.utils || new function () {
 	if (window[window.EDC.datalayerObj] && objCEDDL) {
             window[window.EDC.datalayerObj].events = [];
             window[window.EDC.datalayerObj].events.push(objCEDDL);
+        }
+    };
+    this.userSegmentTracking = function (objCEDDL, join) {
+        if (window[window.EDC.datalayerObj] && objCEDDL) {
+            if (!window[window.EDC.datalayerObj].user) {
+                window[window.EDC.datalayerObj].user = {};
+            }
+
+            if (!join) {
+                window[window.EDC.datalayerObj].user.segment = objCEDDL;
+            } else {
+                (window[window.EDC.datalayerObj].user.segment).extend((window[window.EDC.datalayerObj].user.segment), objCEDDL);
+            }
         }
     };
 
