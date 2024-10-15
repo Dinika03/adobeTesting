@@ -1,6 +1,9 @@
 <html>
 	<head>
+	<!--Property 1 -->
 	<script src="https://assets.adobedtm.com/e72b4113c11a/28cf14cbcd96/launch-d2a0090a9844-development.min.js" async></script>
+	<!-- Property 2
+	<script src="https://assets.adobedtm.com/e72b4113c11a/9233a463faa5/launch-a68d40369487-development.min.js" async></script>-->
 	<title>Testing the event driven data layer Page 1</title>
 	</head>
 	
@@ -15,14 +18,14 @@
 	
 	<script>
 	function updateDataLayer1(){
-		alert("Button Clicked");
+		//alert("Button Clicked");
 		var obj = {
 			'event' : 'cta',
 			'eventInfo': {
 				'eventAction': 'click',
-				'eventName': 'button click',	
+				'eventName': 'button click - EDDL',	
 				'eventType': 'button',
-				'eventComponent': 'Testing Component', 	
+				'eventComponent': 'Testing Component send data', 	
 				'eventPage': 'Solutions.html',	
 				'eventPageName': 'Data Layer Test',
 				'destinationPage': 'Next page',
@@ -30,6 +33,17 @@
 			}
 		}
 		EDCTest.utils.dataLayerTracking(obj);
+
+		var objCEDDL = {
+			eventInfo: {
+			eventComponent: "Testing component sent data",
+			eventType: "button",
+			eventName: "button click - CEDDL",
+			eventText: "send data",
+			eventPage: window.location.href
+			}	
+		}
+		EDC.utils.dataLayerTracking(objCEDDL);
 	}
 	</script>
  
@@ -37,17 +51,31 @@
 	
 	<script>
 	function updateDataLayer2(){
-		alert("Button Clicked");
-		var obj = {
+		//alert("Button Clicked");
+		var objCEDDL = {
 			eventInfo: {
-			eventComponent: "brand – newsletter subscription",
-			eventType: "form",
-			eventName: "form – email submitted",
+			eventComponent: "Testing component submit",
+			eventType: "button",
+			eventName: " button - click - CEDDL",
 			eventText: "Submit",
 			eventPage: window.location.href
 			}
 		};
-		EDC.utils.dataLayerTracking(obj);
+		EDC.utils.dataLayerTracking(objCEDDL);
+		var obj = {
+			'event' : 'cta',
+			'eventInfo': {
+				'eventAction': 'click',
+				'eventName': 'button click - EDDL',	
+				'eventType': 'button',
+				'eventComponent': 'Testing Component submit', 	
+				'eventPage': 'Solutions.html',	
+				'eventPageName': 'Data Layer Test',
+				'destinationPage': 'Next page',
+				'eventText': 'submit'	            //expl: 'learn more'
+			}
+		}
+		EDCTest.utils.dataLayerTracking(obj);
 	}
 	</script>
  
@@ -69,6 +97,16 @@
 			}
 		}
 		EDCTest.utils.dataLayerTracking(obj);
+		var objCEDDL = {
+			eventInfo: {
+			eventComponent: "Testing component Next page",
+			eventType: "button",
+			eventName: " button - click - CEDDL",
+			eventText: "Next Page",
+			eventPage: window.location.href
+			}
+		};
+		EDC.utils.dataLayerTracking(objCEDDL);
 	}
 	</script>
 	
@@ -98,7 +136,8 @@
 				'user': {
 					'authStatus' : 'not-authenticated',    //status is non-authenticated until successful login
 					'externalID': '<external ID>',       // to be persisted in Launch
-					'guid': '123456789'	                // to be persisted in Launch
+					'guid': '123456789',  // to be persisted in Launch
+					'exportStatus': 'currently exporting - EDDL'
 			
 				}
 			}
@@ -109,6 +148,42 @@
 					   // window.EDC.utils.addListTags('region', '[]', obj.page.content);
 					   // window.EDC.utils.addListTags('solution', '[]', obj.user.segment);
 			}
+
+			var objCEDDL= {
+				page: {
+                       			 category: {
+                           			 pageType: 'homepage', // As named within AEM.
+                           			 primaryCategory: '', // From folder structure first entry following language folder.
+                           			 subCategory1: '', // From folder structure second entry following language folder.
+                           			 subCategory2: '' // Populate if category is present. Only use English name of category.
+                        		},
+                       			pageInfo: {
+                            			issueDate: '2018\u002D09\u002D19', // YYYY-MM-DD
+                            			pageName: 'homepage' + pageStepValue, // Page name.
+                           			siteEnv: 'prod', // Standard points of site env: such as dev/stage/test, etc.
+                                    	 	sysEnv: EDC.utils.getDeviceViewPort(), // Mobile / Desktop / Tablet.
+                            			language: 'ENGLISH', // From the folder structure, first folder following the domain.
+                            			server: 'www.edc.ca', // Domain in URL. Specific to environment.
+                            			disableAddthis: 'off' //Addthis status i.e. true for disabled, false for enabled.
+                        		}
+				},
+				 user: {
+                       			 segment : {
+                           			 exportStatus: 'currently exporting - CEDDL',
+                           			 persona: '',
+                           			 buyerStage: '',
+                            			 guid: '',
+                            			 authStatus: "not-authenticated",
+                           			 myedcCustStatus: "non-myEDC user" ,
+                            			 externalID: ''
+					 }
+                        	},
+                   		 events: []
+			};
+			if (window[EDC.datalayerObj]) {
+                		window[window.EDC.datalayerObj] = obj;
+			   }
+			 
 		}
 		 return {
             init
