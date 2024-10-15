@@ -180,15 +180,11 @@
                         	},
                    		 events: []
 			};
-			if (window[window.EDC.datalayerObj] && objCEDDL) {
-            			if (!window[window.EDC.datalayerObj].page) {
-                			window[window.EDC.datalayerObj].page = {};
-					window[window.EDC.datalayerObj].page = objCEDDL;
-            			}
-               		 
-            		
-            		
-        	  }
+			if (window[window.EDC.datalayerObj]) {
+
+					window[window.EDC.datalayerObj] = objCEDDL;
+	
+        	  	}
 			 
 		}
 		 return {
