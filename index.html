@@ -183,20 +183,10 @@
 			if (window[window.EDC.datalayerObj] && objCEDDL) {
             			if (!window[window.EDC.datalayerObj].page) {
                 			window[window.EDC.datalayerObj].page = {};
+					window[window.EDC.datalayerObj].page = objCEDDL;
             			}
-
-            		 if (!window[window.EDC.datalayerObj].page.pageInfo) {
-                		window[window.EDC.datalayerObj].page.pageInfo = {};
-            		}
-			 if (!window[window.EDC.datalayerObj].page.category) {
-                		window[window.EDC.datalayerObj].page.category = {};
-            		}
-
+               		 
             		
-               		 window[window.EDC.datalayerObj].page.pageInfo = objCEDDL;
-            		
-
-               		 window[window.EDC.datalayerObj].page.category = objCEDDL;
             		
         	  }
 			 
