@@ -182,8 +182,9 @@
 			};
 			if (window[window.EDC.datalayerObj]) {
 
-					window[window.EDC.datalayerObj].page = objCEDDL.page;
-					window[window.EDC.datalayerObj].user = objCEDDL.user;
+					window[window.EDC.datalayerObj].page.pageInfo = EDC.utils.pageInfoTracking(objCEDDL.page.pageInfo);
+					window[window.EDC.datalayerObj].page.category = EDC.utils.pageCategoryTracking(objCEDDL.page.category);
+					window[window.EDC.datalayerObj].user.segment = EDC.utils.userSegmentTracking(objCEDDL.user.segement);
 	
         	  	}
 			 
