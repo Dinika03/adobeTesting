@@ -32,12 +32,7 @@
 				'eventText': 'send data'	            //expl: 'learn more'
 			}
 		}
-		if (window[EDCTest.datalayerObj]) {
-				 window[window.EDCTest.datalayerObj].push(obj);
-						//EDC.forms.WaitUntilCustomerGUIDIsRetrieved(); // Eloqua Customer GUID.
-					   // window.EDC.utils.addListTags('region', '[]', obj.page.content);
-					   // window.EDC.utils.addListTags('solution', '[]', obj.user.segment);
-			}
+		EDCTest.utils.dataLayerTracking(obj);
 
 		var objCEDDL = {
 			eventInfo: {
@@ -80,12 +75,7 @@
 				'eventText': 'submit'	            //expl: 'learn more'
 			}
 		}
-		if (window[EDCTest.datalayerObj]) {
-			window[window.EDCTest.datalayerObj].push(obj);
-						//EDC.forms.WaitUntilCustomerGUIDIsRetrieved(); // Eloqua Customer GUID.
-					   // window.EDC.utils.addListTags('region', '[]', obj.page.content);
-					   // window.EDC.utils.addListTags('solution', '[]', obj.user.segment);
-		}
+		EDCTest.utils.dataLayerTracking(obj);
 	}
 	</script>
  
@@ -106,12 +96,7 @@
 				'eventText': 'Next Page'	            //expl: 'learn more'
 			}
 		}
-		if (window[EDCTest.datalayerObj]) {
-				 window[window.EDCTest.datalayerObj].push(obj);
-						//EDC.forms.WaitUntilCustomerGUIDIsRetrieved(); // Eloqua Customer GUID.
-					   // window.EDC.utils.addListTags('region', '[]', obj.page.content);
-					   // window.EDC.utils.addListTags('solution', '[]', obj.user.segment);
-			}
+		EDCTest.utils.dataLayerTracking(obj);
 		var objCEDDL = {
 			eventInfo: {
 			eventComponent: "Testing component Next page",
@@ -158,12 +143,7 @@
 			   
 			}
 			
-			if (window[EDCTest.datalayerObj]) {
-				 window[window.EDCTest.datalayerObj].push(obj);
-						//EDC.forms.WaitUntilCustomerGUIDIsRetrieved(); // Eloqua Customer GUID.
-					   // window.EDC.utils.addListTags('region', '[]', obj.page.content);
-					   // window.EDC.utils.addListTags('solution', '[]', obj.user.segment);
-			}
+			EDCTest.utils.dataLayerTracking(obj);
 
 			var objCEDDL= {
 				page: {
