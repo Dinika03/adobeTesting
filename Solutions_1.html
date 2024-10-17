@@ -35,7 +35,12 @@
 				'eventText': 'go back'	            //expl: 'learn more'
 			}
 		}
-		EDCTest.utils.dataLayerTracking(obj);
+		if (window[EDCTest.datalayerObj]) {
+				 window[window.EDCTest.datalayerObj].push(obj);
+						//EDC.forms.WaitUntilCustomerGUIDIsRetrieved(); // Eloqua Customer GUID.
+					   // window.EDC.utils.addListTags('region', '[]', obj.page.content);
+					   // window.EDC.utils.addListTags('solution', '[]', obj.user.segment);
+			}
 		var objCEDDL = {
 			eventInfo: {
 			eventComponent: "Testing component go back",
@@ -45,7 +50,9 @@
 			eventPage: window.location.href
 			}
 		};
-		EDC.utils.dataLayerTracking(objCEDDL);
+		if (window[EDC.datalayerObj]) {
+                	window[window.EDC.datalayerObj] = objCEDDL;
+		 }
 	}
 	</script>
 	
