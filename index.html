@@ -48,9 +48,7 @@
 			eventPage: window.location.href
 			}	
 		}
-		if (window[EDC.datalayerObj]) {
-                	window[window.EDC.datalayerObj] = objCEDDL;
-		}
+		EDC.utils.dataLayerTracking(objCEDDL);
 	}
 	</script>
  
@@ -68,9 +66,7 @@
 			eventPage: window.location.href
 			}
 		};
-		if (window[EDC.datalayerObj]) {
-                	window[window.EDC.datalayerObj] = objCEDDL;
-		}
+		EDC.utils.dataLayerTracking(objCEDDL);
 		var obj = {
 			'event' : 'cta',
 			'eventInfo': {
