@@ -48,7 +48,9 @@
 			eventPage: window.location.href
 			}	
 		}
-		EDC.utils.dataLayerTracking(objCEDDL);
+		if (window[EDC.datalayerObj]) {
+                	window[window.EDC.datalayerObj] = objCEDDL;
+		}
 	}
 	</script>
  
@@ -66,7 +68,9 @@
 			eventPage: window.location.href
 			}
 		};
-		EDC.utils.dataLayerTracking(objCEDDL);
+		if (window[EDC.datalayerObj]) {
+                	window[window.EDC.datalayerObj] = objCEDDL;
+		}
 		var obj = {
 			'event' : 'cta',
 			'eventInfo': {
@@ -81,11 +85,11 @@
 			}
 		}
 		if (window[EDCTest.datalayerObj]) {
-				 window[window.EDCTest.datalayerObj].push(obj);
+			window[window.EDCTest.datalayerObj].push(obj);
 						//EDC.forms.WaitUntilCustomerGUIDIsRetrieved(); // Eloqua Customer GUID.
 					   // window.EDC.utils.addListTags('region', '[]', obj.page.content);
 					   // window.EDC.utils.addListTags('solution', '[]', obj.user.segment);
-			}
+		}
 	}
 	</script>
  
