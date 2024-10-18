@@ -17,39 +17,37 @@
 	
 	<button id="sendDataButton">send data</button>
         <script>
- 	   document.addEventListener('DOMContentLoaded', function() {
-           var button = document.getElementById('sendDataButton');
-           button.addEventListener('click', updateDataLayer1);
-   	 });
+ 	   document.getElementById('sendDataButton').addEventListener('click', function() {
+	   var eventData = {
+	        'event': 'buttonClick',
+	        'eventInfo': {
+	            'eventAction': 'click',
+	            'eventName': 'button click - EDDL',
+	            'eventType': 'button',
+	            'eventComponent': 'Testing Component send data',
+	            'eventPage': 'Solutions.html',
+	            'eventPageName': 'Data Layer Test',
+	            'destinationPage': 'Next page',
+	            'eventText': 'send data'
+	        }
+	    };
 
-    function updateDataLayer1() {
-        //alert("Button Clicked");
-        var obj = {
-            'event': 'cta',
-            'eventInfo': {
-                'eventAction': 'click',
-                'eventName': 'button click - EDDL',
-                'eventType': 'button',
-                'eventComponent': 'Testing Component send data',
-                'eventPage': 'Solutions.html',
-                'eventPageName': 'Data Layer Test',
-                'destinationPage': 'Next page',
-                'eventText': 'send data' //expl: 'learn more'
-            }
-        }
-
-        var objCEDDL = {
-            eventInfo: {
-                eventComponent: "Testing component sent data",
-                eventType: "button",
-                eventName: "button click - CEDDL",
-                eventText: "send data",
-                eventPage: window.location.href
-            }
-        }
-        EDC.utils.dataLayerTracking(objCEDDL);
-        EDCTest.utils.dataLayerTracking(obj);
-    }
+	    var objCEDDL = {
+	        eventInfo: {
+	            eventComponent: "Testing component sent data",
+	            eventType: "button",
+	            eventName: "button click - CEDDL",
+	            eventText: "send data",
+	            eventPage: window.location.href
+	        }
+	    };
+         if (typeof EDC !== 'undefined' && EDC.utils && EDC.utils.dataLayerTracking) {
+	        EDC.utils.dataLayerTracking(objCEDDL);
+	    }
+	    if (typeof EDCTest !== 'undefined' && EDCTest.utils && EDCTest.utils.dataLayerTracking) {
+	        EDCTest.utils.dataLayerTracking(eventData);
+	    }
+});
 </script> 
  	<button onclick="updateDataLayer2()"> Submit </button>
 	
