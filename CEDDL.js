@@ -19,7 +19,7 @@ EDC.utils = EDC.utils || new function () {
             window[window.EDC.datalayerObj].events.push(objCEDDL);
         }
     };
-    this.userSegmentTracking = function (objCEDDL, join) {
+    /*this.userSegmentTracking = function (objCEDDL, join) {
         if (window[window.EDC.datalayerObj] && objCEDDL) {
             if (!window[window.EDC.datalayerObj].user) {
                 window[window.EDC.datalayerObj].user = {};
@@ -67,7 +67,7 @@ EDC.utils = EDC.utils || new function () {
                 (window[window.EDC.datalayerObj].page.category).extend((window[window.EDC.datalayerObj].page.category), objCEDDL);
             }
         }
-    };
+    };*/
 }
 
 
