@@ -6,8 +6,6 @@ EDC.datalayerObj = 'digitalData';
 if (!window.digitalData) {
     window[EDC.datalayerObj] = {};
     window[EDC.datalayerObj].page = window[EDC.datalayerObj].page || {};
-    //window[EDC.datalayerObj].user.segment = window[EDC.datalayerObj].page.category || {};
-   //window[EDC.datalayerObj].user.segment = window[EDC.datalayerObj].page.pageInfo || {};
     window[EDC.datalayerObj].events = window[EDC.datalayerObj].events || [];
     window[EDC.datalayerObj].user = window[EDC.datalayerObj].user || {};
     window[EDC.datalayerObj].user.segment = window[EDC.datalayerObj].user.segment || {};
