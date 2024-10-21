@@ -42,7 +42,10 @@
 			eventPage: window.location.href
 			}	
 		}
-	EDC.utils.dataLayerTracking(objCEDDL);
+	if (window[window.EDC.datalayerObj] && objCEDDL) {
+            window[window.EDC.datalayerObj].events = [];
+            window[window.EDC.datalayerObj].events.push(objCEDDL);
+        }
 	EDCTest.utils.dataLayerTracking(obj);	
 	
 		
