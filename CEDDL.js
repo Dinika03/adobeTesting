@@ -16,7 +16,17 @@ EDC.utils = EDC.utils || new function () {
      this.dataLayerTracking = function (objCEDDL) {	
 	if (window[window.EDC.datalayerObj] && objCEDDL) {
             window[window.EDC.datalayerObj].events = [];
-            window[window.EDC.datalayerObj].events.push(objCEDDL);
+            window[window.EDC.datalayerObj].events.push({
+		    eventInfo: {
+			eventComponent: objCEDDL.eventInfo.eventComponent,
+			eventType: objCEDDL.eventInfo.eventType,
+			eventName: objCEDDL.eventInfo.eventName,
+			eventText: objCEDDL.eventInfo.eventText,
+			eventPage: objCEDDL.eventInfo.eventPage
+		    
+		    }
+		    
+	    });
         }
     };
     /*this.userSegmentTracking = function (objCEDDL, join) {
