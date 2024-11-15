@@ -53,9 +53,9 @@
 	{
 		updateDataLayerMethod();
 	}
-	document.getElementById('sendData').addEventListener('click', function() {
-	//e.preventDefault();
-		loadEventData();
+	document.getElementById('sendData').addEventListener('click', function(e) {
+	e.preventDefault();
+        loadEventData();
 		
 	});
 	
