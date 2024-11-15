@@ -18,9 +18,10 @@
 	<button id="sendData"> send data </button>
 	
 	<script>
-	document.getElementById('sendData').addEventListener('click', function(e) {
-	e.preventDefault();
-	 var obj = {
+	
+	function updateDataLayerMethod(){
+	
+		var obj = {
 			'event' : 'cta',
 			'eventInfo': {
 				'eventAction': 'click',
@@ -33,7 +34,7 @@
 				'eventText': 'send data'	            //expl: 'learn more'
 			}
 		}
-	 var objCEDDL = {
+		var objCEDDL = {
 			eventInfo: {
 			eventComponent: "Testing component sent data",
 			eventType: "button",
@@ -42,12 +43,20 @@
 			eventPage: window.location.href
 			}	
 		}
-	if (window[window.EDC.datalayerObj] && objCEDDL) {
+		if (window[window.EDC.datalayerObj] && objCEDDL) {
             window[window.EDC.datalayerObj].events = [];
             window[window.EDC.datalayerObj].events.push(objCEDDL);
         }
-	EDCTest.utils.dataLayerTracking(obj);	
-	
+		EDCTest.utils.dataLayerTracking(obj);
+
+	}
+	function loadEventData()
+	{
+		updateDataLayerMethod();
+	}
+	document.getElementById('sendData').addEventListener('click', function() {
+	//e.preventDefault();
+		loadEventData();
 		
 	});
 	
@@ -165,8 +174,8 @@
                        			pageInfo: {
                             			issueDate: '2018\u002D09\u002D19', // YYYY-MM-DD
                             			pageName: 'homepage', // Page name.
-                           			siteEnv: 'prod', // Standard points of site env: such as dev/stage/test, etc.
-                                    	 	sysEnv: 'desktop', // Mobile / Desktop / Tablet.
+										siteEnv: 'prod', // Standard points of site env: such as dev/stage/test, etc.
+                                    	sysEnv: 'desktop', // Mobile / Desktop / Tablet.
                             			language: 'ENGLISH', // From the folder structure, first folder following the domain.
                             			server: ' ', // Domain in URL. Specific to environment.
                             			disableAddthis: 'off' //Addthis status i.e. true for disabled, false for enabled.
@@ -177,13 +186,20 @@
                            			 exportStatus: 'currently exporting - CEDDL',
                            			 persona: '',
                            			 buyerStage: '',
-                            			 guid: '',
-                            			 authStatus: "not-authenticated",
+                            		 guid: '',
+                            		 authStatus: "not-authenticated",
                            			 myedcCustStatus: "non-myEDC user" ,
-                            			 externalID: ''
+                            		 externalID: ''
 					 }
                         	},
-                   		 events: [{eventInfo: {'eventPageName': 'homepage'}}]
+                   events: [{eventInfo: {
+				eventPageName: '',
+				eventComponent: '',
+				eventType: '',
+				eventName: '',
+				eventText: '',
+				eventPage: window.location.href
+				}}]
 			};
 			if (window[window.EDC.datalayerObj]) {
 
