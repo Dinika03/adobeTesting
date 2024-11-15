@@ -44,7 +44,12 @@
 			}	
 		}
 	
-                EDC.utils.dataLayerTracking(objCEDDL);
+                if (window[window.EDC.datalayerObj]) {
+
+				window[window.EDC.datalayerObj] = objCEDDL;
+				
+	
+        	  	}
         
 		//EDCTest.utils.dataLayerTracking(obj);
 
