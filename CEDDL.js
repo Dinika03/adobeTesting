@@ -21,8 +21,8 @@ if (!window.digitalData) {
         
         digitalData.events.push(item);
         
-         document.dispatchEvent(new CustomEvent('dataLayerUpdated', { detail: item }));
-
+         document.dispatchEvent(new CustomEvent('dataLayerUpdatedButton', { detail: item }));
+	
      
         
         console.log('Event processed from queue:', item);
