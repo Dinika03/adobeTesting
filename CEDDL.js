@@ -20,8 +20,8 @@ if (!window.digitalData) {
         var item = dataLayerQueue.shift();
         
         digitalData.events.push(item);
-	var element = this.tagName;
-	console.log(e);
+	var element = e.target.tagName;
+	console.log(element);
 	if(element === 'BUTTON'){
  		 
          document.dispatchEvent(new CustomEvent('dataLayerUpdatedButton', { detail: item }));
