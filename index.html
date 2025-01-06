@@ -54,7 +54,7 @@
 		updateDataLayerMethod();
 	}
 	document.getElementById('sendData').addEventListener('click', function() {
-		handleClick({
+		EDC.utils.dataLayerTracking({
         		eventComponent: "Testing component sent data",
 			eventType: "button",
 			eventName: "button click - CEDDL",
