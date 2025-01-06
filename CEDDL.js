@@ -25,7 +25,8 @@ if (!window.digitalData) {
 	const clickEvent = new MouseEvent('click', {
 		 bubbles: true,
  		 cancelable: true,
- 		 view: window
+ 		 view: window,
+		 detail: item
 	});
 
 	document.dispatchEvent(clickEvent);
