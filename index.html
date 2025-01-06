@@ -34,7 +34,7 @@
 				'eventText': 'send data'	            //expl: 'learn more'
 			}
 		}
-		const objCEDDL = {
+		/*const objCEDDL = {
 			eventInfo: {
 				eventComponent: "Testing component sent data",
 				eventType: "button",
@@ -44,7 +44,7 @@
 			}	
 		}
 	
-                EDC.utils.dataLayerTracking(objCEDDL)
+                EDC.utils.dataLayerTracking(objCEDDL)*/
         
 		EDCTest.utils.dataLayerTracking(obj);
 
@@ -53,10 +53,15 @@
 	{
 		updateDataLayerMethod();
 	}
-	document.getElementById('sendData').addEventListener('click', function(e) {
-	e.preventDefault();
-        loadEventData();
-		
+	document.getElementById('sendData').addEventListener('click', function() {
+		handleClick({
+        		eventComponent: "Testing component sent data",
+			eventType: "button",
+			eventName: "button click - CEDDL",
+			eventText: "send data",
+			eventPage: window.location.href
+     		 });
+		loadEventData();
 	});
 	
 	</script>
