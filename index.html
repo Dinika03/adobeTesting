@@ -101,7 +101,7 @@
 	{
 		updateDataLayerMethod2();
 	}
-	document.getElementById('submitData').addEventListener('click', function() {
+	document.getElementById('submitData').addEventListener('click', function(e) {
 		EDC.utils.dataLayerTracking({
 			eventComponent: "Testing component submit",
 			eventType: "button",
@@ -109,7 +109,7 @@
 			eventText: "Submit",
 			eventPage: window.location.href
 			
-	});
+	},e);
 	loadEventData2();
 	});
 	</script>
@@ -148,14 +148,14 @@
 	{
 		updateDataLayerMethod3();
 	}
-	document.getElementById('linkData').addEventListener('click', function() {
+	document.getElementById('linkData').addEventListener('click', function(e) {
 		EDC.utils.dataLayerTracking({
         		eventComponent: "Testing component Next page",
 			eventType: "link",
 			eventName: " link - click - CEDDL",
 			eventText: "Next Page",
 			eventPage: window.location.href
-     		 });
+     		 },e);
 		loadEventData3();
 	});
 	
