@@ -13,15 +13,21 @@ if (!window.digitalData) {
     window[EDC.datalayerObj].user.segment = window[EDC.datalayerObj].user.segment || {};
     
 }
- function processQueue() {
+ function processQueue(e) {
         if (isProcessing || dataLayerQueue.length === 0) return;
         
         isProcessing = true;
         var item = dataLayerQueue.shift();
         
         digitalData.events.push(item);
+	var element = this.tagName;
+	console.log(element);
+	if(element === 'BUTTON'){
+ 		 
+         document.dispatchEvent(new CustomEvent('dataLayerUpdatedButton', { detail: item }));
+		
+	}
         
-         document.dispatchEvent(new CustomEvent('dataLayerUpdated', { detail: item }));
 	
      
         
@@ -34,7 +40,7 @@ if (!window.digitalData) {
 } 
 EDC.utils = EDC.utils || new function () {
     'use strict';
-     this.dataLayerTracking = function (objCEDDL) {	
+     this.dataLayerTracking = function (objCEDDL,e) {	
 	if (window[window.EDC.datalayerObj] && objCEDDL) {
             window[window.EDC.datalayerObj].events = [];
             dataLayerQueue.push({
@@ -48,7 +54,7 @@ EDC.utils = EDC.utils || new function () {
 		    }
 		    
 	    });
-	    processQueue();
+	    processQueue(e);
         }
     };
     /*this.userSegmentTracking = function (objCEDDL, join) {
