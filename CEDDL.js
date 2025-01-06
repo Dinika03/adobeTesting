@@ -21,8 +21,8 @@ if (!window.digitalData) {
         
         digitalData.events.push(item);
         
-        var customEvent = new CustomEvent('click', { item });
-        document.dispatchEvent(customEvent);
+        /*var customEvent = new CustomEvent('click', { item });*/
+        document.dispatchEvent('click');
         
         console.log('Event processed from queue:', item);
         
