@@ -27,7 +27,11 @@ if (!window.digitalData) {
          document.dispatchEvent(new CustomEvent('dataLayerUpdatedButton', { detail: item }));
 		
 	}
-        
+        if(element === 'A'){
+ 		 
+         document.dispatchEvent(new CustomEvent('dataLayerUpdatedLink', { detail: item }));
+		
+	}
 	
      
         
