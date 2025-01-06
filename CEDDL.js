@@ -20,7 +20,7 @@ if (!window.digitalData) {
         var item = dataLayerQueue.shift();
         
         digitalData.events.push(item);
-	var element = this.tagName;
+	var element = e.tagName;
 	console.log(element);
 	if(element === 'BUTTON'){
  		 
