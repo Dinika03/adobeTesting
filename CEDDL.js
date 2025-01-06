@@ -22,7 +22,14 @@ if (!window.digitalData) {
         digitalData.events.push(item);
         
         /*var customEvent = new CustomEvent('click', { item });*/
-        document.dispatchEvent('click');
+	const clickEvent = new MouseEvent('click', {
+		 bubbles: true,
+ 		 cancelable: true,
+ 		 view: window
+	});
+
+	document.dispatchEvent(clickEvent);
+     
         
         console.log('Event processed from queue:', item);
         
