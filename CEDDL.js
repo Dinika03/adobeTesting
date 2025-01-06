@@ -2,6 +2,8 @@
 window.EDC = window.EDC || {};
 
 EDC.datalayerObj = 'digitalData';
+var dataLayerQueue = [];
+var isProcessing = false;
 
 if (!window.digitalData) {
     window[EDC.datalayerObj] = {};
@@ -9,14 +11,32 @@ if (!window.digitalData) {
     window[EDC.datalayerObj].events = window[EDC.datalayerObj].events || [];
     window[EDC.datalayerObj].user = window[EDC.datalayerObj].user || {};
     window[EDC.datalayerObj].user.segment = window[EDC.datalayerObj].user.segment || {};
+    
 }
- 
+ function processQueue() {
+        if (isProcessing || dataLayerQueue.length === 0) return;
+        
+        isProcessing = true;
+        var item = dataLayerQueue.shift();
+        
+        digitalData.events.push(item);
+        
+        var customEvent = new CustomEvent('dataLayerUpdated', { detail: item });
+        document.dispatchEvent(customEvent);
+        
+        console.log('Event processed from queue:', item);
+        
+        setTimeout(function() {
+            isProcessing = false;
+            processQueue();
+        }, 100);
+} 
 EDC.utils = EDC.utils || new function () {
     'use strict';
      this.dataLayerTracking = function (objCEDDL) {	
 	if (window[window.EDC.datalayerObj] && objCEDDL) {
             window[window.EDC.datalayerObj].events = [];
-            window[window.EDC.datalayerObj].events.push({
+            dataLayerQueue.push({
 		    eventInfo: {
 			eventComponent: objCEDDL.eventInfo.eventComponent,
 			eventType: objCEDDL.eventInfo.eventType,
@@ -27,6 +47,7 @@ EDC.utils = EDC.utils || new function () {
 		    }
 		    
 	    });
+	    processQueue();
         }
     };
     /*this.userSegmentTracking = function (objCEDDL, join) {
