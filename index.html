@@ -66,12 +66,12 @@
 	
 	</script>
 	
- 	<button onclick="updateDataLayer2()" type="submit"> Submit </button>
+ 	<button id="submitData" type="submit"> Submit </button>
       
 	<script>
-	function updateDataLayer2(){
+	function updateDataLayerMethod2(){
 		//alert("Button Clicked");
-		var objCEDDL = {
+		/*var objCEDDL = {
 			eventInfo: {
 			eventComponent: "Testing component submit",
 			eventType: "button",
@@ -80,7 +80,7 @@
 			eventPage: window.location.href
 			}
 		};
-		EDC.utils.dataLayerTracking(objCEDDL);
+		EDC.utils.dataLayerTracking(objCEDDL);*/
 		var obj = {
 			'event' : 'cta',
 			'eventInfo': {
@@ -94,15 +94,28 @@
 				'eventText': 'submit'	            //expl: 'learn more'
 			}
 		}
-		EDC.utils.dataLayerTracking(objCEDDL);
+		//EDC.utils.dataLayerTracking(objCEDDL);
 		EDCTest.utils.dataLayerTracking(obj);
 	}
+	function loadEventData()
+	{
+		updateDataLayerMethod2();
+	}
+	document.getElementById('submitData').addEventListener('click', function() {
+		EDC.utils.dataLayerTracking({
+			eventComponent: "Testing component submit",
+			eventType: "button",
+			eventName: " button - click - CEDDL",
+			eventText: "Submit",
+			eventPage: window.location.href
+			loadEventData();
+	});
 	</script>
  
 	
-	<a class="test" href = "Solutions_1.html" onclick="updateDataLayer()" target="_self">Next Page</a>
+	<a id="linkData" href = "Solutions_1.html" target="_self">Next Page</a>
 		<script>
-		function updateDataLayer(){
+		function updateDataLayerMethod3(){
 		var obj = {
 			'event' : 'cta',
 			'eventInfo': {
@@ -117,7 +130,7 @@
 			}
 		}
 
-		var objCEDDL = {
+		/*var objCEDDL = {
 			eventInfo: {
 			eventComponent: "Testing component Next page",
 			eventType: "link",
@@ -126,9 +139,24 @@
 			eventPage: window.location.href
 			}
 		};
-		EDC.utils.dataLayerTracking(objCEDDL);
+		EDC.utils.dataLayerTracking(objCEDDL);*/
 		EDCTest.utils.dataLayerTracking(obj);
 	}
+	function loadEventData()
+	{
+		updateDataLayerMethod3();
+	}
+	document.getElementById('linkData').addEventListener('click', function() {
+		EDC.utils.dataLayerTracking({
+        		eventComponent: "Testing component Next page",
+			eventType: "link",
+			eventName: " link - click - CEDDL",
+			eventText: "Next Page",
+			eventPage: window.location.href
+     		 });
+		loadEventData();
+	});
+	
 	</script>
 	
 	
