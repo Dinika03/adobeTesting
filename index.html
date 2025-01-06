@@ -53,7 +53,7 @@
 	{
 		updateDataLayerMethod();
 	}
-	document.getElementById('sendData').addEventListener('click', function() {
+	document.getElementById('sendData').addEventListener('click', function(e) {
 		EDC.utils.dataLayerTracking({
         		eventComponent: "Testing component sent data",
 			eventType: "button",
