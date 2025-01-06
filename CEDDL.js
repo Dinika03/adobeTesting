@@ -21,15 +21,8 @@ if (!window.digitalData) {
         
         digitalData.events.push(item);
         
-        /*var customEvent = new CustomEvent('click', { item });*/
-	const clickEvent = new MouseEvent('click', {
-		 bubbles: true,
- 		 cancelable: true,
- 		 view: window,
-		 detail: item
-	});
+         document.dispatchEvent(new CustomEvent('dataLayerUpdated', { detail: item }));
 
-	document.dispatchEvent(clickEvent);
      
         
         console.log('Event processed from queue:', item);
