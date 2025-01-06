@@ -37,10 +37,10 @@ if (!window.digitalData) {
         
         console.log('Event processed from queue:', item);
         
-        setTimeout(function() {
+        //setTimeout(function() {
             isProcessing = false;
             processQueue();
-        }, 100);
+       // }, 100);
 } 
 EDC.utils = EDC.utils || new function () {
     'use strict';
