@@ -38,11 +38,11 @@ EDC.utils = EDC.utils || new function () {
             window[window.EDC.datalayerObj].events = [];
             dataLayerQueue.push({
 		    eventInfo: {
-			eventComponent: objCEDDL.eventInfo.eventComponent,
-			eventType: objCEDDL.eventInfo.eventType,
-			eventName: objCEDDL.eventInfo.eventName,
-			eventText: objCEDDL.eventInfo.eventText,
-			eventPage: objCEDDL.eventInfo.eventPage
+			eventComponent: objCEDDL.eventComponent,
+			eventType: objCEDDL.eventType,
+			eventName: objCEDDL.eventName,
+			eventText: objCEDDL.eventText,
+			eventPage: objCEDDL.eventPage
 		    
 		    }
 		    
