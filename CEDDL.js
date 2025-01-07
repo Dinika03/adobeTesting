@@ -35,7 +35,7 @@ if (!window.digitalData) {
 	
      
         
-        console.log('Event processed from queue:', item);
+        //console.log('Event processed from queue:', item);
         
         //setTimeout(function() {
             isProcessing = false;
